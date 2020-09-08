@@ -1,14 +1,22 @@
 //Variables DOM
 let btn = document.querySelector(".btn");
 let tareas = document.querySelector(".tareas");
+let deleteAll = document.querySelector('.deleteBtn')
+let fecha = document.querySelector('.fecha');
+
+//Mostrar la fecha actual
+let date = Date().split('2020')[0];
+fecha.innerHTML = date;
+
 
 //Eventos
-
 cargarEventos()
 
 function cargarEventos(){
     btn.addEventListener("click", agregarTarea);
-    tareas.addEventListener('click', borrarTarea)
+    tareas.addEventListener('click', borrarTarea);
+    deleteAll.addEventListener("click", borrarTodasLasTareas);
+
 }
 
 //Crear las tareas
@@ -35,16 +43,16 @@ function agregarTarea(e) {
   e.preventDefault();
 }
 
+//Borrar las tareas si contienen la clase item
 function borrarTarea(e){
     if(e.target.parentElement.classList.contains('item')){
         e.target.parentElement.style.display = 'none'
     }
 }
 
-function borrarTodasLasTareas(e){
-    if(e.target.parentElement.parentElement.classList.contains('tareas')){
-        
-    }
+//Borrar todas as tareas
+function borrarTodasLasTareas(){
+   tareas.style.display = 'none';
 }
 
 

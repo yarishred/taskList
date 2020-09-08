@@ -45,7 +45,7 @@ body {
   position: absolute;
   top: 0;
   right: 0;
-  content: "Septiembre 7";
+  content: "";
   line-height: 25vmin;
   text-align: center;
   font-size: 0.8rem;
@@ -57,6 +57,17 @@ body {
   line-height: 2rem;
   font-weight: lighter;
   color: #f3f3f3;
+}
+
+.imgText .fecha {
+  position: relative;
+  top:-70%;
+  right:-71%;
+  line-height: 2rem;
+  font-weight: lighter;
+  color: #f3f3f3;
+  font-size: 1rem;
+  text-shadow: 1px 1px 1px #333;
 }
 
 .imgText p {
@@ -107,15 +118,16 @@ body {
   color: #333;
 }
 
-.main__form .btn {
+.btn {
   width: 100%;
-  padding: 7px;
+  padding:7px;
   font-family: "Poppins", sans-serif;
   background: #099fd0;
   border: none;
   color: #f3f3f3;
   outline: none;
   cursor: pointer;
+  
 }
 
 .mis__tareas {
@@ -132,10 +144,12 @@ body {
   justify-content: space-around;
   align-items: center;
   padding: 0;
+  overflow:auto
 }
 
 .mis__tareas ul li {
   width: 100%;
+  height: auto;
   display: flex;
   justify-content: space-between;
   list-style: none;
@@ -149,13 +163,18 @@ body {
 
 .mis__tareas ul .btn2 {
   border: none;
-  background: #fa2600;
+  background: tomato;
   margin-right: 5px;
-  padding: 5pxpx;
   border-radius: 50%;
   font-size: 0.7rem;
   font-family: "Poppins", sans-serif;
   color: #f3f3f3;
   cursor: pointer;
   outline: none;
+}
+
+.deleteAll .btn {
+  padding: 7px 20px;
+  margin-bottom: 20px;
+  background: tomato;
 }
