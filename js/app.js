@@ -17,7 +17,7 @@ function cargarEventos() {
   btn.addEventListener("click", agregarTarea);
   tareas.addEventListener("click", borrarTarea);
   deleteAll.addEventListener("click", borrarTodasLasTareas);
-  document.addEventListener('DOMContentLoaded', mantenerLocalStorage);
+  document.addEventListener('DOMContentLoaded', mantenerLocalStorage)
 }
 
 //Crear las tareas
@@ -37,7 +37,7 @@ function agregarTarea(e) {
     button.innerHTML = "X";
     li.appendChild(button);
 
-    //Almacenar en el array y en el sessionStorage
+    //Almacenar en el array y en el localStorage
     tareasLocalStorage(formInput.value)
   }
   //Limpiar el Input
@@ -63,13 +63,13 @@ function borrarTodasLasTareas() {
 
 //Funcion almacenamiento  LocalStorage
 function tareasLocalStorage(tasks) {
-  if(sessionStorage.getItem('tareas') === null){
+  if(localStorage.getItem('tareas') === null){
     tareasArr = []
   } else {
-    JSON.parse(sessionStorage.getItem('tareas'))
+    JSON.parse(localStorage.getItem('tareas'))
   }
   tareasArr.push(tasks)
-  sessionStorage.setItem('tareas', JSON.stringify(tareasArr))
+  localStorage.setItem('tareas', JSON.stringify(tareasArr))
   
   console.log(tareasArr)
 }
@@ -77,13 +77,14 @@ function tareasLocalStorage(tasks) {
 //funcion mantener Local Storage
 
 function mantenerLocalStorage() {
-  if(sessionStorage.getItem('tareas') === null){
+  if(localStorage.getItem('tareas') === null){
     tareasArr = []
+    console.log(tareasArr)
   } else {
-    JSON.parse(sessionStorage.getItem('tareas'))
+    tareasArr = JSON.parse(localStorage.getItem('tareas'));
   }
   tareasArr.forEach(tareas => {
-      //Crear la lista con el valor y el botton de cerrar
+    //Crear la lista con el valor y el botton de cerrar
     let li = document.createElement("li");
     li.classList.add("item");
     let task = document.createTextNode(tareas);
@@ -93,26 +94,27 @@ function mantenerLocalStorage() {
     button.classList.add("btn2");
     button.innerHTML = "X";
     li.appendChild(button);
-  });
+  })
+
 }
 
 //borrar del local storage
 function borrarLocalStorage(tarea) {
-  if(sessionStorage.getItem('tareas') === null){
+  if(localStorage.getItem('tareas') === null){
     tareasArr = []
   } else {
-    JSON.parse(sessionStorage.getItem('tareas'))
+    JSON.parse(localStorage.getItem('tareas'))
   }
   tareasArr.forEach(function(item, index) {
     if(tarea.textContent.split('X')[0] === item){
       tareasArr.splice(index, 1)
     }
   })
-  sessionStorage.setItem('tareas', JSON.stringify(tareasArr))
+  localStorage.setItem('tareas', JSON.stringify(tareasArr))
 }
 
 
 //Borrar todas la tareas
 function borrarTodo(){
-  sessionStorage.clear()
+  localStorage.clear()
 }
