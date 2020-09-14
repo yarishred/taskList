@@ -37,7 +37,7 @@ function agregarTarea(e) {
     button.innerHTML = "X";
     li.appendChild(button);
 
-    //Almacenar en el array y en el localStorage
+    //Almacenar en el array y en el sessionStorage
     tareasLocalStorage(formInput.value)
   }
   //Limpiar el Input
@@ -63,13 +63,13 @@ function borrarTodasLasTareas() {
 
 //Funcion almacenamiento  LocalStorage
 function tareasLocalStorage(tasks) {
-  if(localStorage.getItem('tareas') === null){
+  if(sessionStorage.getItem('tareas') === null){
     tareasArr = []
   } else {
-    JSON.parse(localStorage.getItem('tareas'))
+    JSON.parse(sessionStorage.getItem('tareas'))
   }
   tareasArr.push(tasks)
-  localStorage.setItem('tareas', JSON.stringify(tareasArr))
+  sessionStorage.setItem('tareas', JSON.stringify(tareasArr))
   
   console.log(tareasArr)
 }
@@ -77,10 +77,10 @@ function tareasLocalStorage(tasks) {
 //funcion mantener Local Storage
 
 function mantenerLocalStorage() {
-  if(localStorage.getItem('tareas') === null){
+  if(sessionStorage.getItem('tareas') === null){
     tareasArr = []
   } else {
-    JSON.parse(localStorage.getItem('tareas'))
+    JSON.parse(sessionStorage.getItem('tareas'))
   }
   tareasArr.forEach(tareas => {
       //Crear la lista con el valor y el botton de cerrar
@@ -98,21 +98,21 @@ function mantenerLocalStorage() {
 
 //borrar del local storage
 function borrarLocalStorage(tarea) {
-  if(localStorage.getItem('tareas') === null){
+  if(sessionStorage.getItem('tareas') === null){
     tareasArr = []
   } else {
-    JSON.parse(localStorage.getItem('tareas'))
+    JSON.parse(sessionStorage.getItem('tareas'))
   }
   tareasArr.forEach(function(item, index) {
     if(tarea.textContent.split('X')[0] === item){
       tareasArr.splice(index, 1)
     }
   })
-  localStorage.setItem('tareas', JSON.stringify(tareasArr))
+  sessionStorage.setItem('tareas', JSON.stringify(tareasArr))
 }
 
 
 //Borrar todas la tareas
 function borrarTodo(){
-  localStorage.clear()
+  sessionStorage.clear()
 }
