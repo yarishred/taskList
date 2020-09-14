@@ -178,3 +178,11 @@ body {
   margin-bottom: 20px;
   background: tomato;
 }
+
+/*Media Querie*/
+
+@media (max-width: 500px) {
+  .main__container {
+    margin: 20px;
+  }
+}
